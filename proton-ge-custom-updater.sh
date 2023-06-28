@@ -31,6 +31,7 @@ install() {
     # Check if current release is already installed
     if [ -d "$(echo "$filename" | sed "s|\.tar\.gz||")" ]; then
         echo "--> Current version is already installed."
+        notify-send "Proton-GE No update required"
         return 0
     else
         # Download latest release, extract the files and delete the archive
@@ -66,6 +67,7 @@ install() {
         echo "--> Removing the compressed archive..."
         rm "$filename"
         echo "--> Done. Please check the command line for errors and restart Steam for the changes to take effect."
+        notify-send "Proton-GE Successfully uploaded and updated"
         return 0
     fi
 }
